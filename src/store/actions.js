@@ -19,9 +19,10 @@ export const fetchPost = () => {
 
             dispatch({
             type: actionTypes.fetchPost,
-            payload: response.data
+            payload: response.data,
             });
         }catch(error){
+        console.log(error);
             dispatch({ type: actionTypes.error, payload: error});
         }     
 
@@ -50,7 +51,7 @@ export const editPost = (id) => {
             title: faker.word.words({ count: { min:3, max:6 }}),
             body: faker.lorem.lines({ min: 1, max: 3}),
         });
-
+        
         dispatch({
             type: actionTypes.editPost,
             payload: response.data
@@ -65,6 +66,7 @@ export const deletePost = (id) => {
         dispatch({
             type: actionTypes.deletePost,
             payload: response.data
+            
         });
     };
 };

@@ -1,4 +1,3 @@
-import { fa } from "@faker-js/faker";
 import { actionTypes } from "./actions";
 
 const initialState = {
@@ -23,7 +22,7 @@ export const postsReducer = (state = initialState, action) => {
                 isLoading: false,
                 error: null,
                 posts: state.posts.map((post)=>{
-                 if(post.id == action.payload){
+                 if(post.id === action.payload.id){
                     return action.payload;
                  }
                  return post;
@@ -32,7 +31,7 @@ export const postsReducer = (state = initialState, action) => {
         case actionTypes.deletePost:
             return {
                 ...state,
-                posts: state.posts.filter(post => post.id != action.payload),
+                posts: state.posts.filter(post => post.id !== action.payload.id),
             }
         default:
             return state;

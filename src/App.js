@@ -1,3 +1,4 @@
+import { use, useEffect } from "react";
 import PostItem from "./components/PostItem";
 import { fetchPost,addPost,editPost,deletePost } from "./store";
 import { connect } from "react-redux";
@@ -19,7 +20,7 @@ function App({posts,fetchPost, addPost,editPost,deletePost}){
         content = <div>{posts.error.message}</div>
     }else if(posts.isLoading){
         content = <div>Loading ...</div>
-    }else{
+    }else if(posts.posts){
         content = <div>{renderedPostList}</div>
     }
 
